@@ -26,7 +26,7 @@ class Models:
                          activation="relu",
                          strides=1)(model)
             if len(conv_layer_info[i]) > 2:
-                model = MaxPooling1D(pool_size = 2)(model)
+                model = MaxPooling1D(pool_size = conv_layer_info[i][2])(model)
         
         model = Flatten()(model)
         
