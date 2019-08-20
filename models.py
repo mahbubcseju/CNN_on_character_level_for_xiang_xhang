@@ -40,5 +40,18 @@ class Models:
         model.fit(self.x_train, self.y_train, batch_size = batch_size, epochs= epochs, validation_data=(self.x_test, self.y_test), 
                       verbose=2)
         print("Training Completed")
+        self.model = model
+    
+    def predict(self, x_test, classes):
+        predicted_result = self.model.predict(x_test)
+        predicted_class = []
+        for row in range(len(predicted_result)):
+            max_index = 0
+            for col in range(1,len(predicted_result)):
+                if predicted_result[row][col] > predicted_result[row][max_index]:
+                    max_index = col
+            predicted_class.append(classes[max_index])
+        return predicted_class
+
         
     

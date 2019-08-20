@@ -26,15 +26,25 @@ conncted_layer_info = [
 batch_size = 128
 epochs = 10
 num_of_classes = 4
+
+classes = [ "World","Sports","Business","Sci/Tech"]
+
 data = DataHelper("data-ag-news/train.csv")
 
 x_train, y_train = data.read_data()
 
 data1 = DataHelper("data-ag-news/test.csv")
 
-x_test, y_test = data.read_data()
+x_test, y_test = data1.read_data()
 
 model = Models(x_train, y_train, x_test, y_test, num_of_classes)
 model.models( input_length, vocab_size, embedding_dim, conv_layer_info, conncted_layer_info,batch_size,epochs)
+
+data2 = DataHelper("data-ag-news/test_test.csv")
+xx_test,yy_test = data2.read_data()
+
+print(model.predict(xx_test,classes))
+
+
 
 
